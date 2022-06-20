@@ -1,67 +1,43 @@
-import { Button, Checkbox, Form, Input } from 'antd';
-import '../styles/signup.css'
+import { Button, Form, Input } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Route, useNavigate } from 'react-router-dom';
-import Login from './Login';
+import { useNavigate } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
+import '../styles/signup.css';
 
-// const formItemLayout = {
-//     labelCol: {
-//         xs: {
-//             span: 24,
-//         },
-//         sm: {
-//             span: 8,
-//         },
-//     },
-//     wrapperCol: {
-//         xs: {
-//             span: 24,
-//         },
-//         sm: {
-//             span: 16,
-//         },
-//     },
-// };
-// const tailFormItemLayout = {
-//     wrapperCol: {
-//         xs: {
-//             span: 24,
-//             offset: 0,
-//         },
-//         sm: {
-//             span: 16,
-//             offset: 8,
-//         },
-//     },
-// };
 
 const SignUp = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate()
-    // const selectorRegister = useSelector(state => state.users);
-    // console.log(selectorRegister);
-    const flagRedux = useSelector(state => state.flag)
-
+    const selectorDemo = useSelector(state => state)
+    console.log('selectorDemo', selectorDemo);
     const onFinish = (values) => {
         dispatch({
             type: 'SEND_REQUEST_REGISTER',
             data: {
-                username: values.email,
+                id: uuidv4(),
+                username: values.username,
                 password: values.password,
 
-            }
+            }, handleSubmit
+
         })
 
+
     };
+
+
+
     const handleSubmit = () => {
         navigate('/')
+
+
     };
+
     return (
         <div className='container__signup'>
 
             <Form
-                // {...formItemLayout}
                 name="register"
                 onFinish={onFinish}
 
@@ -70,20 +46,17 @@ const SignUp = () => {
                 style={{ width: '400px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}
             >
                 <Form.Item
-                    name="email"
+                    name="username"
                     rules={[
                         {
-                            type: 'email',
-                            message: 'The input is not valid E-mail!',
-                        },
-                        {
                             required: true,
-                            message: 'Please input your E-mail!',
+                            message: 'Vui lòng nhập tài khoản!',
                         },
                     ]}
+                    hasFeedback
                 >
                     <Input
-                        placeholder='Nhập email'
+                        placeholder='Nhập tài khoản'
                         style={{ borderRadius: '30px', height: '40px', width: '350px' }}
                     />
                 </Form.Item>
@@ -93,7 +66,7 @@ const SignUp = () => {
                     rules={[
                         {
                             required: true,
-                            message: 'Please input your password!',
+                            message: 'Vui lòng nhập mật khẩu!',
                         },
                     ]}
                     hasFeedback
@@ -111,7 +84,7 @@ const SignUp = () => {
                     rules={[
                         {
                             required: true,
-                            message: 'Please confirm your password!',
+                            message: 'Vui lòng nhập lại mật khẩu!',
                         },
                         ({ getFieldValue }) => ({
                             validator(_, value) {
@@ -119,7 +92,7 @@ const SignUp = () => {
                                     return Promise.resolve();
                                 }
 
-                                return Promise.reject(new Error('The two passwords that you entered do not match!'));
+                                return Promise.reject(new Error('Mật khẩu không trùng nhau!'));
                             },
                         }),
                     ]}
@@ -130,15 +103,14 @@ const SignUp = () => {
                 </Form.Item>
 
                 <Form.Item
-                    //  {...tailFormItemLayout}
                     style={{ marginLeft: '0' }}
                 >
                     <Button type="primary" htmlType="submit"
-                        style={{ height: '40px', width: '30 0px', borderRadius: '6px' }}
+                        style={{ height: '40px', width: '300px', borderRadius: '6px' }}
 
-                        onClick={handleSubmit}
+                    // onClick={handleSubmit}
                     >
-                        Register
+                        Đăng ký
                     </Button>
                 </Form.Item>
             </Form>

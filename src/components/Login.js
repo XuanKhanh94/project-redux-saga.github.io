@@ -10,7 +10,7 @@ function Login(props) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const selectorFlag = useSelector(state => { return state.flag })
-    console.log('selectorFlag', selectorFlag);
+    // console.log('selectorFlag', selectorFlag);
     const onFinish = (values) => {
         dispatch({
             type: 'LOGIN_REQUEST',
@@ -23,11 +23,7 @@ function Login(props) {
     };
 
     const handleLogin = (e) => {
-        // if (useSelector === true) {
-        //     e.preventDefault();
-        //     navigate('/home')
-        // }
-        // selectorFlag ? navigate('/home') : navigate('/')
+
     }
     return (
 
@@ -55,7 +51,7 @@ function Login(props) {
                 >
                     <Input prefix={<UserOutlined
                         className="site-form-item-icon" />}
-                        placeholder="Email"
+                        placeholder="Tài khoản"
                         style={{ borderRadius: '30px', height: '40px' }} />
                 </Form.Item>
                 <Form.Item

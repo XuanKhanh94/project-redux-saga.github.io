@@ -12,7 +12,7 @@ function App() {
   })
   return (
     <div className="App">
-      {/* <Login /> */}
+      {/* <ForgotPassword /> */}
 
       <Routes>
         {flagRedux ? <Route path='/' element={<Home />} /> : <Route path='/' element={<Login />} />}
