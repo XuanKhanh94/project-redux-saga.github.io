@@ -1,0 +1,11 @@
+.container__login {
+    height: 100vh;
+    .login-form {
+        box-shadow: 0px 0px 6px 1px #ccc;
+        border-radius: 5px;
+        min-height: 350px;
+        .ant-form-item {
+            margin: 20px 20px;
+        }
+    }
+}
