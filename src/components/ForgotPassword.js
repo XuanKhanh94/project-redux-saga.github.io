@@ -3,12 +3,16 @@ import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { Button, Form, Input, InputNumber } from 'antd';
 import '../styles/forgotPassword.css'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 function ForgotPassword(props) {
 
     const dispatch = useDispatch();
-    const [password, setPassword] = useState('');
-    const selectorFlag = useSelector(state => state.flag)
+    const selectorFlag = useSelector(state => state.flag2)
+
+    const idChangePassword = useSelector(state => state.id)
+    const navigate = useNavigate();
+
 
 
     const onRequestUser = (values) => {
@@ -18,19 +22,23 @@ function ForgotPassword(props) {
                 data: {
                     userforgotpassword: values.user.email
                 }
-            }
-        )
+            })
+
     };
     const onFinish = (e) => {
-
         dispatch({
-            type: 'REQUEST_PROVIDE_PASSWORD',
+            type: 'REQUEST_CHANGER_PASSWORD',
             data: {
-                newpassword: e.password
-            }
+                newpassword: e.password,
+                id: idChangePassword
+            }, handleRedirect
 
         })
 
+    }
+
+    const handleRedirect = () => {
+        navigate('/')
     }
     return (
         <div className="form__change-password">
@@ -44,7 +52,7 @@ function ForgotPassword(props) {
 
                     style={{ marginBottom: '0' }}
                 >
-                    <Input style={{ width: '300px', borderRadius: '100px', height: '40px', marginRight: '8px' }} />
+                    <Input placeholder='Nhập user' style={{ width: '300px', borderRadius: '100px', height: '40px', marginRight: '8px' }} />
                 </Form.Item>
 
                 <Form.Item style={{ display: 'flex', }}>

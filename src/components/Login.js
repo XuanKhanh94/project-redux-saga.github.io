@@ -1,33 +1,60 @@
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Checkbox, Form, Input, notification } from 'antd';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, Link } from "react-router-dom";
-import '../styles/login.css'
+import { Link } from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css';
+import loading from '../assest/loading.gif';
+import '../styles/login.css';
 
 
 function Login(props) {
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const selectorFlag = useSelector(state => { return state.flag })
-    // console.log('selectorFlag', selectorFlag);
+
+    // const [display, setDisplay] = useState('display:none')
+
+
     const onFinish = (values) => {
+        console.log(values);
         dispatch({
             type: 'LOGIN_REQUEST',
             data: {
                 user: values.usernames,
                 password: values.passwords
-            },
+            }, openNotificationUser, openNotificationPassword
         })
 
     };
+    notification.config({
+        placement: 'topRight',
+        // top: 50,
+        duration: 4,
+        rtl: false,
+    });
+    const openNotificationUser = (type) => {
+        notification[type]({
+            message: 'Sai tài khoản',
 
-    const handleLogin = (e) => {
+        });
+    };
 
+    const openNotificationPassword = (type) => {
+        notification[type]({
+            message: 'Sai mật khẩu',
+
+        });
     }
+
+
     return (
 
         <div className='container__login' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <div className='login__loading'>
+                <div className='overflow'>
+                    <img src={loading} alt='loading' className='img__loading' />
+                </div>
+            </div>
             <Form
                 name="normal_login"
                 className="login-form"
@@ -39,6 +66,7 @@ function Login(props) {
                     width: '330px',
                 }}
             >
+
                 <Form.Item
                     name="usernames"
                     rules={[
@@ -86,7 +114,7 @@ function Login(props) {
                     <Button type="primary" htmlType="submit"
                         className="login-form-button"
                         style={{ width: '100%', height: '40px', marginBottom: '20px' }}
-                        onClick={handleLogin}
+
                     >
                         Đăng nhập
                     </Button>

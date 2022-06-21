@@ -9,8 +9,7 @@ const SignUp = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate()
-    const selectorDemo = useSelector(state => state)
-    console.log('selectorDemo', selectorDemo);
+    const [form] = Form.useForm();
     const onFinish = (values) => {
         dispatch({
             type: 'SEND_REQUEST_REGISTER',
@@ -39,9 +38,26 @@ const SignUp = () => {
 
             <Form
                 name="register"
-                onFinish={onFinish}
+                onFinish={() => {
+                    form.validateFields().then(values => {
+                        dispatch({
+                            type: 'SEND_REQUEST_REGISTER',
+                            data: {
+                                id: uuidv4(),
+                                username: values.username,
+                                password: values.password,
 
+                            }, handleSubmit
+
+                        })
+                    }).catch(err => { console.log(err); })
+                }}
+                form={form}
                 scrollToFirstError
+                initialValues={{
+                    username: '',
+                    name: '',
+                }}
 
                 style={{ width: '400px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}
             >

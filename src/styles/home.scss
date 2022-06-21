@@ -1,0 +1,14 @@
+.container-menu {
+    .layout__menu-home {
+        .header__menu-home {
+            background-color: #fff;
+            color: #000;
+            .header__menu-left {
+                background-color: red;
+            }
+            .header__menu-right {
+                background-color: teal;
+            }
+        }
+    }
+}

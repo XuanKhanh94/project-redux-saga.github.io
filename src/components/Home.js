@@ -1,83 +1,40 @@
-import { Breadcrumb, Layout, Menu } from 'antd';
-import { MailOutlined, SettingOutlined, AppstoreOutlined } from '@ant-design/icons';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { Layout, Col, Row, Button } from 'antd';
+import '../styles/home.css'
+
+
+const { Header, Footer, Sider, Content } = Layout;
 
 
 
+function Home(props) {
+    const dispatch = useDispatch();
+    const handleLogout = () => {
+        dispatch({
+            type: 'LOGOUT_REQUEST',
 
+        })
+    }
+    return (
+        <div className='container-menu'>
+            <Layout className='layout__menu-home'>
+                <Header className='header__menu-home'>
 
-const { Header, Content, Footer } = Layout;
-function getItem(label, key, icon, children, type) {
-    return {
-        key,
-        icon,
-        children,
-        label,
-        type,
-    };
+                    <Row>
+                        <Col className='header__menu-left' span={12}>col</Col>
+                        <Col className='header__menu-right' span={12}>
+
+                            <Button onClick={handleLogout} >Logout</Button>
+                        </Col>
+                    </Row>
+
+                </Header>
+                <Content>Content</Content>
+                <Footer>Footer</Footer>
+            </Layout>
+        </div>
+    );
 }
-
-const items = [
-    getItem('Navigation One', 'sub1', <MailOutlined />, [
-        getItem('Item 1', null, null, [getItem('Option 1', '1'), getItem('Option 2', '2')], 'group'),
-        getItem('Item 2', null, null, [getItem('Option 3', '3'), getItem('Option 4', '4')], 'group'),
-    ]),
-    getItem('Navigation Two', 'sub2', <AppstoreOutlined />, [
-        getItem('Option 5', '5'),
-        getItem('Option 6', '6'),
-        getItem('Submenu', 'sub3', null, [getItem('Option 7', '7'), getItem('Option 8', '8')]),
-    ]),
-    getItem('Navigation Three', 'sub4', <SettingOutlined />, [
-        getItem('Option 9', '9'),
-        getItem('Option 10', '10'),
-        getItem('Option 11', '11'),
-        getItem('Option 12', '12'),
-    ]),
-];
-
-const onClick = (e) => {
-    console.log('click', e);
-};
-
-const Home = () => (
-    <Layout className="layout">
-        <Header style={{ padding: '0px', }}>
-            <div className="logo" />
-            <Menu
-                onClick={onClick}
-                style={{
-                    width: '100%', backgroundColor: '#000', color: '#fff'
-                }}
-                mode="horizontal"
-                items={items}
-            />
-        </Header>
-        <Content
-            style={{
-                padding: '0 50px',
-            }}
-        >
-            <Breadcrumb
-                style={{
-                    margin: '16px 0',
-                }}
-            >
-                <Breadcrumb.Item>Home</Breadcrumb.Item>
-                {/* <Breadcrumb.Item>List</Breadcrumb.Item>
-                <Breadcrumb.Item>App</Breadcrumb.Item> */}
-            </Breadcrumb>
-            <div className="site-layout-content">
-                <h3>Chào mừng đến với trang chủ</h3>
-
-            </div>
-        </Content>
-        <Footer
-            style={{
-                textAlign: 'center',
-            }}
-        >
-            Đây là cuối trang rồi
-        </Footer>
-    </Layout>
-);
 
 export default Home;
