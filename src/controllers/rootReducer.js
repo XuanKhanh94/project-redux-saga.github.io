@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
-
 const initialState = {
     users: [
         // { id: '63ab6eef-92ee-466b-a464-01dd9fac4593', username: '1', password: '1' },
@@ -10,16 +8,16 @@ const initialState = {
 
 
 const rootReducer = (state = initialState, action) => {
-    console.log('reducer', state);
+    console.log('action.payload', action);
     switch (action.type) {
-        case 'LOGIN_SUCCESS': {
-            return {
-                ...state,
-                users: action.users,
+        // case 'LOGIN_SUCCESS': {
+        //     return {
+        //         ...state,
+        //         users: action.users,
 
-            }
-        }
-        case 'LOGOUT_SUCCESS':
+        //     }
+        // }
+        // case 'LOGOUT_SUCCESS':
         case 'LOGIN_IN_SUCCESS': {
             return {
                 ...state,
@@ -38,7 +36,7 @@ const rootReducer = (state = initialState, action) => {
             console.log('SIGNUP_SUCCESS', [...state.users, action.user]);
             return {
                 ...state,
-                users: [...state.users, action.user]
+                users: [...state.users, action.user,]
             }
 
         }

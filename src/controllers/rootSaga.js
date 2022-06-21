@@ -5,26 +5,27 @@ import { put, select, takeEvery, delay } from 'redux-saga/effects';
 function* loginRequest(action) {
 
     try {
-        const { user, password } = action.data;
+        const { user, password, flag } = action.data;
 
         const getDataReducer = yield select((state) => state.users);
-        for (let i = 0; i <= getDataReducer.length; i++) {
+        for (let i = 0; i < getDataReducer.length; i++) {
             if (getDataReducer[i].username === user && getDataReducer[i].password === password) {
-                yield delay(1500)
-                return (yield put({
+                console.log('login');
+                // yield delay(1500)
+                yield put({
                     type: 'LOGIN_IN_SUCCESS',
-                    data: true
-                }))
+                    data: flag
+                })
 
             }
+            return getDataReducer[i]
+            // if (getDataReducer[i].username !== user) {
+            //     return (action.openNotificationUser('error'))
+            // }
 
-            if (getDataReducer[i].username !== user) {
-                return (action.openNotificationUser('error'))
-            }
-
-            if (getDataReducer[i].password !== password) {
-                return (action.openNotificationPassword('error'))
-            }
+            // if (getDataReducer[i].password !== password) {
+            //     return (action.openNotificationPassword('error'))
+            // }
 
         }
 

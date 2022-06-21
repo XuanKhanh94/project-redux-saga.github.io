@@ -12,17 +12,15 @@ function Login(props) {
 
     const dispatch = useDispatch();
 
-    // const [display, setDisplay] = useState('display:none')
-
-
     const onFinish = (values) => {
-        console.log(values);
+        console.log('login values', values);
         dispatch({
             type: 'LOGIN_REQUEST',
             data: {
                 user: values.usernames,
-                password: values.passwords
-            }, openNotificationUser, openNotificationPassword
+                password: values.passwords,
+                flag: true,
+            },
         })
 
     };
@@ -51,7 +49,7 @@ function Login(props) {
 
         <div className='container__login' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <div className='login__loading'>
-                <div className='overflow'>
+                <div className='overflow' >
                     <img src={loading} alt='loading' className='img__loading' />
                 </div>
             </div>
