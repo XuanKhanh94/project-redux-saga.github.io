@@ -1,10 +1,13 @@
-import React from 'react';
+import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import { Button, Col, Layout, Menu, Row, Space, Dropdown } from 'antd';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Layout, Col, Row, Button } from 'antd';
-import '../styles/home.css'
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, NavLink, Route, Routes, useRoutes } from 'react-router-dom'
+import '../styles/home.css';
+import About from './about';
+import Contact from './contact';
+import ForgotPassword from './ForgotPassword';
 import SignUp from './SignUp';
-import Login from './Login';
 
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -19,30 +22,115 @@ function Home(props) {
 
         })
     }
+    const items = [
+        {
+            label: (
+                <NavLink to='/'
+                    className='btn-logout'
+                    rel="noopener noreferrer">
+                    Home
+                </NavLink>
+            ),
+            key: 'mail',
+        },
+        {
+            label: (
+                <NavLink to='/about'
+                    className='btn-logout'
+                    rel="noopener noreferrer">
+                    About
+                </NavLink>
+            ),
+            key: 'app',
+        },
+        {
+            label: (
+                <NavLink to='/contact'
+                    className='btn-logout'
+                    rel="noopener noreferrer">
+                    Contact
+                </NavLink>
+            ),
+            key: 'SubMenu',
+
+        },
+        {
+            label: (
+                <Button onClick={handleLogout}
+                    className='btn-logout'
+                    rel="noopener noreferrer">
+                    Logout
+                </Button>
+            ),
+            key: 'alipay',
+        },
+    ];
+
+
+    // const [current, setCurrent] = useState('mail');
+
+    let element = useRoutes([
+        {
+            path: "/",
+            element: <Home />,
+            children: [
+                {
+                    path: "about",
+                    element: <About />,
+                },
+                // { path: "tasks", element: <DashboardTasks /> },
+            ],
+        },
+        { path: "contact", element: <Contact /> },
+    ]);
+
     return (
         <div className='container-menu'>
             <Layout className='layout__menu-home'>
                 <Header className='header__menu-home'>
 
                     <Row>
-                        <Col className='header__menu-left' span={12}>col</Col>
-                        <Col className='header__menu-right' span={12}>
+                        <Col className='header__nav' span={24}>
 
-                            <Button onClick={handleLogout}>Logout</Button>
+                            <div className='container__navbar'>
+
+                                <Menu
+                                    // onClick={onClick} selectedKeys={[current]}
+                                    mode="horizontal" items={items} />
+                                {/* <Button onClick={handleLogout} className='btn-logout'>Logout</Button> */}
+
+                            </div>
+
+
                         </Col>
 
                     </Row>
 
                 </Header>
-                <Content>
-                    Content
-                    {/* <Link to="/login">Signup</Link>
-                    <Routes>
-                        <Route to='/login' element={Login} />
-                    </Routes> */}
+                <Content className='container__content'>
+                    <Row>
+                        <Col span={24}>
+                            <div className='image__top-content'></div>
+                            <div className='text-box'>
+
+                                <h1 className='heading-primary'>
+                                    <span className='heading-primary-main'>mylife</span>
+                                    <span className='heading-primary-sub'>no money no happy</span>
+                                </h1>
+                            </div>
+                        </Col>
+                    </Row>
+
+
+
                 </Content>
                 <Footer>Footer</Footer>
             </Layout>
+
+            {/* <Route path='/signup' element={<SignUp />} />
+            <Route path='/forgotpassword' element={<ForgotPassword />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='/about' element={<About />} /> */}
         </div>
     );
 }

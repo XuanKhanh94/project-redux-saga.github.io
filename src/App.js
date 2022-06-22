@@ -1,6 +1,8 @@
 
 import { useSelector } from 'react-redux';
-import { Route, Routes, } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+import About from './components/about';
+import Contact from './components/contact';
 import ForgotPassword from './components/ForgotPassword';
 import Home from './components/Home';
 import Login from './components/Login';
@@ -12,13 +14,14 @@ function App() {
   })
   return (
     <div className="App">
-
       <Routes>
         {flagRedux ? <Route path='/' element={<Home />} /> : <Route path='/' element={<Login />} />}
         <Route path='/signup' element={<SignUp />} />
         <Route path='/forgotpassword' element={<ForgotPassword />} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='/about' element={<About />} />
         <Route path='/' element={<Login />} />
-        <Route path='/login' element={<Login />} />
+
       </Routes>
     </div>
   );

@@ -1,13 +1,1 @@
-.container-menu .layout__menu-home .header__menu-home {
-  background-color: #fff;
-  color: #000;
-}
-
-.container-menu .layout__menu-home .header__menu-home .header__menu-left {
-  background-color: red;
-}
-
-.container-menu .layout__menu-home .header__menu-home .header__menu-right {
-  background-color: teal;
-}
-/*# sourceMappingURL=home.css.map */
+.container-menu .layout__menu-home{margin:0;background-color:#fff}.container-menu .layout__menu-home .header__menu-home{background-color:#fff;color:#000;padding:0;margin-bottom:5px}.container-menu .layout__menu-home .header__menu-home .header__nav{display:flex;justify-content:flex-end;align-items:center;line-height:26px;height:64px;line-height:64px}.container-menu .layout__menu-home .header__menu-home .header__nav .container__navbar{width:100%;display:flex;justify-content:flex-start;align-items:center}.container-menu .layout__menu-home .header__menu-home .header__nav .container__navbar .ant-menu-horizontal{border-bottom:unset;width:100%}.container-menu .layout__menu-home .header__menu-home .header__nav .btn-logout{height:40px;color:#000;font-weight:500;border:transparent;outline:transparent;box-shadow:none}.container-menu .container__content{position:relative}.container-menu .container__content .image__top-content{background-image:linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(39, 180, 133, 0.8)),url(../assest//hero.jpg);background-position:top;background-size:cover;height:90vh;-webkit-clip-path:polygon(0 0, 100% 0, 100% 70%, 0% 100%);clip-path:polygon(0 0, 100% 0, 100% 70%, 0% 100%)}.container-menu .container__content .text-box{position:relative;position:absolute;top:40%;left:50%;transform:translate(-50%, -50%)}.container-menu .container__content .text-box .heading-primary{color:#fff;text-transform:uppercase}.container-menu .container__content .text-box .heading-primary .heading-primary-main{display:block;font-size:60px;font-weight:400;letter-spacing:60px}.container-menu .container__content .text-box .heading-primary .heading-primary-sub{display:block;font-size:20px;font-weight:700;letter-spacing:18px}
