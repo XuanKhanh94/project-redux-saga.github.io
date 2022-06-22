@@ -1,6 +1,6 @@
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, notification } from 'antd';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,29 +10,38 @@ import '../styles/login.css';
 
 function Login(props) {
 
+    const ref = useRef(null);
     const dispatch = useDispatch();
-
+    const selectFlag = useSelector(state => state.flag)
     const onFinish = (values) => {
-        console.log('login values', values);
         dispatch({
             type: 'LOGIN_REQUEST',
             data: {
                 user: values.usernames,
                 password: values.passwords,
                 flag: true,
-            },
+            }, openNotificationUser,
+            openNotificationPassword,
+            openNotificationUserPassword,
+            loginLoading
         })
 
     };
     notification.config({
         placement: 'topRight',
         // top: 50,
-        duration: 4,
+        duration: 2.5,
         rtl: false,
     });
     const openNotificationUser = (type) => {
         notification[type]({
             message: 'Sai tài khoản',
+
+        });
+    };
+    const openNotificationUserPassword = (type) => {
+        notification[type]({
+            message: 'Sai tài khoản và mật khẩu',
 
         });
     };
@@ -44,15 +53,21 @@ function Login(props) {
         });
     }
 
+    function loginLoading() {
+        const getElementLoading = ref.current;
+        selectFlag ? getElementLoading.style.display = "none" : getElementLoading.style.display = "block"
+
+    }
 
     return (
 
         <div className='container__login' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <div className='login__loading'>
-                <div className='overflow' >
+                <div className='overflow' ref={ref} >
                     <img src={loading} alt='loading' className='img__loading' />
                 </div>
             </div>
+
             <Form
                 name="normal_login"
                 className="login-form"

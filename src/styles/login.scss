@@ -16,6 +16,7 @@
             background-color: rgba(0, 0, 0, 0.08);
             z-index: 10;
             display: none;
+
             .img__loading {
                 height: 150px;
                 position: absolute;
@@ -23,8 +24,12 @@
                 left: 50%;
                 transform: translate(-50%, -50%);
             }
+            &:active {
+                display: block;
+            }
         }
     }
+
     .login-form {
         box-shadow: 0px 0px 6px 1px #ccc;
         border-radius: 5px;

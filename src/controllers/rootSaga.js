@@ -6,28 +6,32 @@ function* loginRequest(action) {
 
     try {
         const { user, password, flag } = action.data;
-
         const getDataReducer = yield select((state) => state.users);
-        for (let i = 0; i < getDataReducer.length; i++) {
-            if (getDataReducer[i].username === user && getDataReducer[i].password === password) {
-                console.log('login');
-                // yield delay(1500)
+
+        const findUser = getDataReducer.find((e) => e.username === user || e.password === password);
+
+
+        if (findUser && Object.keys(findUser).length > 0) {
+
+            if (findUser.username === user && findUser.password === password) {
+                action.loginLoading()
+                yield delay(300)
                 yield put({
                     type: 'LOGIN_IN_SUCCESS',
                     data: flag
                 })
-
             }
-            return getDataReducer[i]
-            // if (getDataReducer[i].username !== user) {
-            //     return (action.openNotificationUser('error'))
-            // }
+            if (findUser.username !== user) {
+                action.openNotificationUser('error')
+            }
 
-            // if (getDataReducer[i].password !== password) {
-            //     return (action.openNotificationPassword('error'))
-            // }
-
+            if (findUser.password !== password) {
+                action.openNotificationPassword('error')
+            }
+        } else {
+            action.openNotificationUserPassword('error')
         }
+
 
 
     }
@@ -41,7 +45,6 @@ function* loginRequest(action) {
 }
 
 function* logoutRequest(action) {
-    yield delay(1000)
     yield put({
         type: 'LOGOUT_SUCCESS',
         data: false,
@@ -52,15 +55,17 @@ function* logoutRequest(action) {
 
 function* sigupRequest(action) {
     // const inputSignup = action.data;
-    // const infoReducer = yield select(state => state);
+    const infoReducer = yield select(state => state);
     // console.log(infoReducer);
     // console.log(action);
     yield put({
         type: 'SIGNUP_SUCCESS',
         user: action.data,
     });
-    yield delay(1000)
+
+
     action.handleSubmit()
+
 
 }
 
@@ -107,7 +112,7 @@ function* changePasswordRequest(action) {
             type: 'CHANGE_PASSWORD_NEW_SUCCESS',
             data: dataNew,
         });
-        yield delay(1000)
+
         action.handleRedirect()
 
     } catch (error) {

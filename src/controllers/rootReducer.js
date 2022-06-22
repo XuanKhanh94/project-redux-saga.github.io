@@ -1,6 +1,9 @@
 const initialState = {
     users: [
-        // { id: '63ab6eef-92ee-466b-a464-01dd9fac4593', username: '1', password: '1' },
+
+        // { id: '258ed77a-32fd-41a2-a1a4-2d4d26991efc', username: '1', password: '1' },
+        // { id: '90c4e988-0c2c-4641-9052-4997b36041a7', username: '123', password: '123' },
+        // { id: '3c3739a1-cbb5-4c17-b7d9-101ca26dc3a1', username: '12', password: '12' },
     ],
     flag: false,
 
@@ -8,16 +11,15 @@ const initialState = {
 
 
 const rootReducer = (state = initialState, action) => {
-    console.log('action.payload', action);
     switch (action.type) {
-        // case 'LOGIN_SUCCESS': {
-        //     return {
-        //         ...state,
-        //         users: action.users,
+        case 'LOGIN_SUCCESS': {
+            return {
+                ...state,
+                users: action.users,
 
-        //     }
-        // }
-        // case 'LOGOUT_SUCCESS':
+            }
+        }
+        case 'LOGOUT_SUCCESS':
         case 'LOGIN_IN_SUCCESS': {
             return {
                 ...state,
@@ -33,18 +35,19 @@ const rootReducer = (state = initialState, action) => {
             }
         }
         case 'SIGNUP_SUCCESS': {
-            console.log('SIGNUP_SUCCESS', [...state.users, action.user]);
             return {
                 ...state,
-                users: [...state.users, action.user,]
+                users: [...state.users, action.user]
             }
 
         }
 
         case 'CHANGE_PASSWORD_NEW_SUCCESS': {
+
             return {
                 ...state,
                 users: action.data,
+                flag2: false
             }
         }
         default:

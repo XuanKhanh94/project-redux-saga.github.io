@@ -12,13 +12,13 @@ const { Header, Footer, Sider, Content } = Layout;
 
 
 function Home(props) {
-    // const dispatch = useDispatch();
-    // const handleLogout = () => {
-    //     dispatch({
-    //         type: 'LOGOUT_REQUEST',
+    const dispatch = useDispatch();
+    const handleLogout = () => {
+        dispatch({
+            type: 'LOGOUT_REQUEST',
 
-    //     })
-    // }
+        })
+    }
     return (
         <div className='container-menu'>
             <Layout className='layout__menu-home'>
@@ -28,16 +28,19 @@ function Home(props) {
                         <Col className='header__menu-left' span={12}>col</Col>
                         <Col className='header__menu-right' span={12}>
 
-                            <Button >Logout</Button>
+                            <Button onClick={handleLogout}>Logout</Button>
                         </Col>
 
                     </Row>
 
                 </Header>
-                <Content> <Link to="/login">Signup</Link>
+                <Content>
+                    Content
+                    {/* <Link to="/login">Signup</Link>
                     <Routes>
                         <Route to='/login' element={Login} />
-                    </Routes></Content>
+                    </Routes> */}
+                </Content>
                 <Footer>Footer</Footer>
             </Layout>
         </div>

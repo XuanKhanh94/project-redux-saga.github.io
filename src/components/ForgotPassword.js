@@ -16,6 +16,7 @@ function ForgotPassword(props) {
 
 
     const onRequestUser = (values) => {
+
         dispatch(
             {
                 type: 'REQUEST_PROVIDE_PASSWORD',
@@ -30,7 +31,8 @@ function ForgotPassword(props) {
             type: 'REQUEST_CHANGER_PASSWORD',
             data: {
                 newpassword: e.password,
-                id: idChangePassword
+                id: idChangePassword,
+
             }, handleRedirect
 
         })
