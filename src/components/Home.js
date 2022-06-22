@@ -2,10 +2,11 @@ import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/ico
 import { Button, Col, Layout, Menu, Row, Space, Dropdown } from 'antd';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, NavLink, Route, Routes, useRoutes } from 'react-router-dom'
+import { BrowserRouter, Link, NavLink, Route, Routes, useRoutes } from 'react-router-dom'
 import '../styles/home.css';
 import About from './about';
 import Contact from './contact';
+import ErrorPage from './errorpage';
 import ForgotPassword from './ForgotPassword';
 import SignUp from './SignUp';
 
@@ -67,22 +68,7 @@ function Home(props) {
     ];
 
 
-    // const [current, setCurrent] = useState('mail');
 
-    let element = useRoutes([
-        {
-            path: "/",
-            element: <Home />,
-            children: [
-                {
-                    path: "about",
-                    element: <About />,
-                },
-                // { path: "tasks", element: <DashboardTasks /> },
-            ],
-        },
-        { path: "contact", element: <Contact /> },
-    ]);
 
     return (
         <div className='container-menu'>
@@ -93,7 +79,12 @@ function Home(props) {
                         <Col className='header__nav' span={24}>
 
                             <div className='container__navbar'>
-
+                                {/* <nav>
+                                    <Link to='/'>Home</Link>
+                                    <Link to='/about'>about</Link>
+                                    <Link to='/contact'>contact</Link>
+                                </nav>
+                                 */}
                                 <Menu
                                     // onClick={onClick} selectedKeys={[current]}
                                     mode="horizontal" items={items} />
@@ -127,10 +118,8 @@ function Home(props) {
                 <Footer>Footer</Footer>
             </Layout>
 
-            {/* <Route path='/signup' element={<SignUp />} />
-            <Route path='/forgotpassword' element={<ForgotPassword />} />
-            <Route path='/contact' element={<Contact />} />
-            <Route path='/about' element={<About />} /> */}
+
+
         </div>
     );
 }
