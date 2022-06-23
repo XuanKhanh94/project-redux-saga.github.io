@@ -1,9 +1,7 @@
-import React from 'react';
+import { Button, Form, Input } from 'antd';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
-import { Button, Form, Input, InputNumber } from 'antd';
-import '../styles/forgotPassword.css'
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import '../forgot-password/forgotPassword.css';
 
 function ForgotPassword(props) {
 

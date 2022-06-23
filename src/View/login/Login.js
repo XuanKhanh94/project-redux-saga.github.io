@@ -1,11 +1,11 @@
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, notification } from 'antd';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
-import loading from '../assest/loading.gif';
-import '../styles/login.css';
+import loading from '../../assest/loading.gif';
+import '../login/login.css';
 
 
 function Login(props) {

@@ -1,5 +1,4 @@
-import { act } from 'react-dom/test-utils';
-import { put, select, takeEvery, delay } from 'redux-saga/effects';
+import { delay, put, select, takeEvery } from 'redux-saga/effects';
 
 
 function* loginRequest(action) {
@@ -49,15 +48,16 @@ function* logoutRequest(action) {
         type: 'LOGOUT_SUCCESS',
         data: false,
     })
+    yield delay(400)
+    if (action.data === false) {
+        action.redirectToLogin()
+    }
 }
 
 
 
 function* sigupRequest(action) {
-    // const inputSignup = action.data;
-    const infoReducer = yield select(state => state);
-    // console.log(infoReducer);
-    // console.log(action);
+
     yield put({
         type: 'SIGNUP_SUCCESS',
         user: action.data,

@@ -1,8 +1,8 @@
 import { Button, Form, Input } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-import '../styles/signup.css';
+import '../signup/signup.css';
 
 
 const SignUp = () => {
@@ -12,20 +12,20 @@ const SignUp = () => {
     const [form] = Form.useForm();
     // const reducer = useSelector(state => state.users);
     // console.log('reducer', reducer);
-    const onFinish = (values) => {
-        dispatch({
-            type: 'SEND_REQUEST_REGISTER',
-            data: {
-                id: uuidv4(),
-                username: values.username,
-                password: values.password,
+    // const onFinish = (values) => {
+    //     dispatch({
+    //         type: 'SEND_REQUEST_REGISTER',
+    //         data: {
+    //             id: uuidv4(),
+    //             username: values.username,
+    //             password: values.password,
 
-            }, handleSubmit
+    //         }, handleSubmit
 
-        })
+    //     })
 
 
-    };
+    // };
 
 
 
@@ -126,7 +126,6 @@ const SignUp = () => {
                     <Button type="primary" htmlType="submit"
                         style={{ height: '40px', width: '300px', borderRadius: '6px' }}
 
-                    // onClick={handleSubmit}
                     >
                         Đăng ký
                     </Button>
