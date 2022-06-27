@@ -34,30 +34,38 @@ function Contact(props) {
 
                 </div>
             </div>
-            <div>
-                <div>
+            <div className='container-contact'>
+                <div className='title-contact'>
                     <h3>WHERE IS WORK</h3>
                     <span>Everywhere is work</span>
                 </div>
-                <div>
+                <div className='contact-info'>
                     <div>
                         <img src={img1} />
                     </div>
-                    <div>
-                        <span>Ho Chi Minh, Viet Nam</span>
-                        <span>Phone: 09xxxxxx</span>
-                        <span>Email: xuankhanh379@gmail.com</span>
-                        <div>
-                            <span>Swing by for a cup of  or leave me a note:</span>
-                            <div>
-                                <div>
-                                    <Input />
-                                    <Input />
-                                    <Input />
-                                </div>
-                                <Button>Send message</Button>
-                            </div>
+                    <div className='contact-input-form'>
+                        <div className='title-info-contact'>
+                            <span><i className="fa-solid fa-location-dot"></i> Ho Chi Minh, Viet Nam</span>
+                            <span><i className="fa-solid fa-phone"></i>Phone: 09xxxxxx</span>
+                            <span><i className="fa-solid fa-envelope"></i>Email: xuankhanh379@gmail.com</span>
                         </div>
+
+                        <p>Swing by for a cup of <i className="fa-solid fa-mug-hot"></i> ,  or leave me a note:</p>
+                        <form >
+                            <div className="contact-container-input">
+                                <div className=" input-contact">
+                                    <input className="width-input contact-name" type="text" placeholder="Name" required name="Name" />
+                                </div>
+                                <div className=" input-contact">
+                                    <input className="width-input contact-email" type="text" placeholder="Email" required name="Email" />
+                                </div>
+                            </div>
+                            <input className="width-input contact-message" type="text" placeholder="Message" required name="Message" />
+                            <button className="contact-btn" type="submit">
+                                <i className="fa fa-paper-plane"></i> SEND MESSAGE
+                            </button>
+                        </form>
+
                     </div>
                 </div>
             </div>

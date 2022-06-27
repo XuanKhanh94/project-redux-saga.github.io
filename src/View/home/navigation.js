@@ -10,7 +10,7 @@ function Navigation(props) {
             {/* <li><NavLink to='/about'>About</NavLink></li>
             <li><NavLink to='/contact'>Contact</NavLink></li> */}
             <Routes>
-                <Route path='/' element={<Home />} />
+                <Route path='*' element={<Home />} />
                 <Route path='/about' element={<About />} />
                 <Route path='/contact' element={<Contact />} />
             </Routes>

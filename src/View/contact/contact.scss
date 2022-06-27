@@ -1,70 +1,122 @@
 .container {
-    height: 100vh;
-    position: relative;
-    .about__img-cover {
-        background-image: url(../../assest/nat-9.jpg);
-        background-size: cover;
-        background-position: center;
-        height: 50%;
-        border-radius: 6px;
-        border: 1px solid #000;
-    }
-    .container__info-header {
-        height: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        box-shadow: 0 10px 40px 4px #ccc;
-        // max-height: 160px;
+    .container-contact {
+        color: #777777;
+        font-size: 15px;
+        line-height: 27px;
+        margin: 0px 184.5px;
+        padding: 64px 16px;
+        .title-contact {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-bottom: 42px;
 
-        .title-name {
-            .about__title-name {
-                font-size: 30px;
-                font-weight: 500;
+            h3 {
+                font-size: 24px;
+                font-weight: 400;
+                color: #777777;
+            }
+            span {
+                font-size: 16px;
+                font-weight: 400;
+                font-style: italic;
+                color: #777777;
+            }
+        }
+        .contact-info {
+            display: flex;
+            color: #777777;
+            font-size: 15px;
+            line-height: 27px;
+            margin: 16px 0px;
+            padding: 32px 0px;
+            img {
+                width: 286px;
+                height: 160px;
+                border-radius: 4px;
+                color: #777777;
+                display: inline;
+                font-size: 15px;
+                line-height: 27px;
+                margin-right: 32px;
+            }
+            .contact-input-form {
                 display: flex;
-                justify-content: center;
                 flex-direction: column;
-                .about__name-main {
-                    display: block;
-                }
-                .about__name-sub {
-                    display: block;
-                    font-size: 20px;
-                }
-                .total-img {
-                    .img1,
-                    .img2,
-                    .img3,
-                    .img4,
-                    .img5 {
-                        height: 40px;
-                        width: 40px;
-                        border-radius: 50%;
-                        border: 2px solid #fff;
+                .title-info-contact {
+                    display: flex;
+                    flex-direction: column;
+                    color: #777777;
+                    font-size: 18px;
+                    line-height: 32.4px;
+                    margin: 0px 0px 16px;
+                    .fa-solid {
+                        margin-right: 10px;
                     }
-                    .avatar:not(:first-child) {
-                        margin-left: -8px;
+                }
+                p {
+                    margin-bottom: 20px;
+                }
+                form {
+                    .contact-container-input {
+                        display: flex;
+                        width: 100%;
+                        .input-contact {
+                            width: 100%;
+                            flex: 1;
+                            margin-bottom: 5px;
+                            .contact-name,
+                            .contact-email {
+                                background-color: #ffffff;
+                                border-color: #cccccc;
+                                border-style: solid;
+                                border-width: 1px;
+                                font-family: Lato;
+                                font-size: 15px;
+                                line-height: 27px;
+                                padding: 8px;
+                                margin-right: 10px;
+                                min-width: 300px;
+                            }
+                            .width-input {
+                                // width: ;
+                            }
+                        }
+                    }
+                    .contact-message {
+                        background-color: #ffffff;
+                        border-color: #cccccc;
+                        border-style: solid;
+                        border-width: 1px;
+                        font-family: Lato;
+                        font-size: 15px;
+                        line-height: 27px;
+                        padding: 8px;
+                        min-width: 610px;
+                        margin-bottom: 5px;
+                    }
+                    .contact-btn {
+                        border: none;
+                        display: inline-block;
+                        padding: 8px 16px;
+                        vertical-align: middle;
+                        overflow: hidden;
+                        text-decoration: none;
+                        text-align: center;
+                        cursor: pointer;
+                        white-space: nowrap;
+                        background-color: #000;
+                        color: #fff;
+                        float: right;
+                        margin-right: 10px;
+                        &:hover {
+                            background-color: #d8d8d8;
+                            color: #000;
+                        }
                     }
                 }
             }
-        }
-        .about__img-avatar {
-            transform: translate(50px, -70px);
-            background-image: url(../../assest/avatar.jpg);
-            background-size: cover;
-            background-position: top;
-            height: 200px;
-            width: 200px;
-            border-radius: 50%;
-            border: 3px solid #fff;
-            margin-right: 60px;
-        }
-    }
-    .menu__info-about {
-        width: 100%;
-        height: 30px;
-        background-color: #ccc;
-        &__intro-info {
-            display: flex;
         }
     }
 }

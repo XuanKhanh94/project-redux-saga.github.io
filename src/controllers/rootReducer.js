@@ -12,13 +12,13 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'LOGIN_SUCCESS': {
-            return {
-                ...state,
-                users: action.users,
+        // case 'LOGIN_SUCCESS': {
+        //     return {
+        //         ...state,
+        //         users: action.users,
 
-            }
-        }
+        //     }
+        // }
         case 'LOGOUT_SUCCESS':
         case 'LOGIN_IN_SUCCESS': {
             return {
