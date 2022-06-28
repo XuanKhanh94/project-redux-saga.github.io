@@ -1,16 +1,14 @@
-import { Button, Input } from 'antd';
-import { useDispatch } from 'react-redux';
+import { Button } from 'antd';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import './contact.css';
-import img1 from '../../assest/nat-2.jpg';
-import img2 from '../../assest/nat-3.jpg';
-import img3 from '../../assest/nat-4.jpg';
-import img4 from '../../assest/nat-5.jpg';
-import img5 from '../../assest/nat-6.jpg';
 
 function Contact(props) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const selectorId = useSelector(state => state.id.id);
+    console.log('selectorId', selectorId);
     const handleLogout = () => {
         dispatch({
             type: 'LOGOUT_REQUEST',
@@ -21,6 +19,18 @@ function Contact(props) {
     const redirectToLogin = () => {
         navigate('/')
     }
+
+    const response = useSelector(state => state.contact)
+
+    useEffect(() => {
+
+        dispatch({
+            type: 'REQUEST_API_CONTACT',
+            data: selectorId
+        })
+    }, []);
+
+
     return (
 
         <div className='container'>
@@ -41,13 +51,36 @@ function Contact(props) {
                 </div>
                 <div className='contact-info'>
                     <div>
-                        <img src={img1} />
+                        {response.map(p => {
+                            return (
+                                <img key={p.id} src={p.img} />
+                            )
+                        })}
+
                     </div>
                     <div className='contact-input-form'>
                         <div className='title-info-contact'>
-                            <span><i className="fa-solid fa-location-dot"></i> Ho Chi Minh, Viet Nam</span>
-                            <span><i className="fa-solid fa-phone"></i>Phone: 09xxxxxx</span>
-                            <span><i className="fa-solid fa-envelope"></i>Email: xuankhanh379@gmail.com</span>
+                            <span><i className="fa-solid fa-location-dot"></i>
+                                {response.map(p => {
+                                    return (
+                                        <span key={p.id}> {p.city} - {p.country}</span>
+                                    )
+                                })}
+                            </span>
+                            <span><i className="fa-solid fa-phone"></i>
+                                {response.map(p => {
+                                    return (
+                                        <span key={p.id}>Phone: {p.phonenumber}</span>
+                                    )
+                                })}
+                            </span>
+                            <span><i className="fa-solid fa-envelope"></i>
+                                {response.map(p => {
+                                    return (
+                                        <span key={p.id}>Email: {p.email}</span>
+                                    )
+                                })}
+                            </span>
                         </div>
 
                         <p>Swing by for a cup of <i className="fa-solid fa-mug-hot"></i> ,  or leave me a note:</p>

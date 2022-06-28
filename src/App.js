@@ -16,33 +16,33 @@ function App() {
     return state.flag
   })
 
-  const [productList, setProductList] = useState([])
+  // const [productList, setProductList] = useState([])
 
-  useEffect(() => {
-    const fetchContentList = async () => {
+  // useEffect(() => {
+  //   const fetchContentList = async () => {
 
-      try {
-        const response = await ProductApi.getAll();
+  //     try {
+  //       const response = await ProductApi.getAll();
 
-        setProductList(response)
+  //       setProductList(response)
 
 
-      } catch (error) {
-        console.log('failed fetch content', error);
-      }
-    }
-    fetchContentList();
-  }, [])
+  //     } catch (error) {
+  //       console.log('failed fetch content', error);
+  //     }
+  //   }
+  //   fetchContentList();
+  // }, [])
   // console.log(productList.map(p => p.avatar));
   return (
     <div className="App">
 
       <div>
-        {productList.map(p => {
+        {/* {productList.map(p => {
           return (
             <p key={p.id}>{p.email} <img src={p.avatar} alt={p.avatar} /></p>
           )
-        })}
+        })} */}
         {/* {productList.map((p, index) => {
 
           return (

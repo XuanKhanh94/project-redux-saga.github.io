@@ -1,4 +1,13 @@
-import { delay, put, select, takeEvery } from 'redux-saga/effects';
+import { delay, put, select, takeEvery, call, takeLatest, takeLeading } from 'redux-saga/effects';
+import userReceiveAbout from './actions/api/aboutApi';
+import userReceiveContact from './actions/api/contactApi';
+import userReceiveLogin from './actions/api/loginApi';
+
+
+
+
+
+
 
 
 function* loginRequest(action) {
@@ -6,18 +15,20 @@ function* loginRequest(action) {
     try {
         const { user, password, flag } = action.data;
         const getDataReducer = yield select((state) => state.users);
-
         const findUser = getDataReducer.find((e) => e.username === user || e.password === password);
+        console.log('findUser', findUser);
 
 
         if (findUser && Object.keys(findUser).length > 0) {
 
             if (findUser.username === user && findUser.password === password) {
+
                 action.loginLoading()
                 yield delay(300)
                 yield put({
                     type: 'LOGIN_IN_SUCCESS',
-                    data: flag
+                    data: action.data,
+                    id: findUser.id,
                 })
             }
             if (findUser.username !== user) {
@@ -121,6 +132,9 @@ function* changePasswordRequest(action) {
 }
 
 function* rootSaga() {
+    yield takeLeading('REQUEST_API_CONTACT', userReceiveContact)
+    yield takeEvery('REQUEST_API_ABOUT', userReceiveAbout)
+    yield takeEvery('REQUEST_API_LOGIN', userReceiveLogin)
     yield takeEvery('LOGIN_REQUEST', loginRequest)
     yield takeEvery('LOGOUT_REQUEST', logoutRequest)
     yield takeEvery('SEND_REQUEST_REGISTER', sigupRequest)

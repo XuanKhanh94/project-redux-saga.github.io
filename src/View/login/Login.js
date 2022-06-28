@@ -1,6 +1,6 @@
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, notification } from 'antd';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,6 +13,14 @@ function Login(props) {
     const ref = useRef(null);
     const dispatch = useDispatch();
     const selectFlag = useSelector(state => state.flag)
+
+    useEffect(() => {
+        dispatch({
+            type: 'REQUEST_API_LOGIN',
+            data: {}
+        })
+    })
+
     const onFinish = (values) => {
         dispatch({
             type: 'LOGIN_REQUEST',

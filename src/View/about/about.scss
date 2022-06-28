@@ -1,5 +1,4 @@
 .container {
-    // background-color: red;
     height: 100vh;
     position: relative;
     .about__img-cover {
@@ -9,22 +8,16 @@
         height: 50%;
         border-radius: 6px;
         border: 1px solid #000;
+        .img-cover {
+        }
     }
     .container__info-header {
-        // height: 100%;
         display: flex;
         flex-wrap: wrap;
-        // justify-content: space-between;
         box-shadow: 0 10px 40px 4px #ccc;
         max-height: 160px;
 
         .title-name {
-            // position: absolute;
-            // top: 340px;
-            // left: 260px;
-            // background-color: red;
-            // transform: translate(300px, 30px);
-            // height: 200px;
             .about__title-name {
                 font-size: 30px;
                 font-weight: 500;
@@ -56,28 +49,22 @@
             }
         }
         .about__img-avatar {
-            // position: absolute;
-            transform: translate(50px, -70px);
-            background-image: url(../../assest/avatar.jpg);
-            background-size: cover;
-            background-position: top;
-            height: 200px;
-            width: 200px;
-            border-radius: 50%;
-            border: 3px solid #fff;
-            margin-right: 60px;
+            img {
+                transform: translate(50px, -70px);
+                background-size: cover;
+                background-position: top;
+                height: 200px;
+                width: 200px;
+                border-radius: 50%;
+                border: 3px solid #fff;
+                margin-right: 60px;
+            }
         }
         .btn-see-more {
-            // position: absolute;
-
             background-color: red;
             transform: translate(300px, 100px);
         }
         .about-line-info {
-            // width: 100%;
-            // background-color: rgb(175, 171, 171);
-            // height: 1px;
-            // transform: translateY(-30px);
             height: 1px;
             background-color: red;
             width: 100%;

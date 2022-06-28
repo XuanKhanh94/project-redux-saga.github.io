@@ -1,29 +1,45 @@
 const initialState = {
-    users: [
-
-        { id: '258ed77a-32fd-41a2-a1a4-2d4d26991efc', username: '1', password: '1' },
-        // { id: '90c4e988-0c2c-4641-9052-4997b36041a7', username: '123', password: '123' },
-        // { id: '3c3739a1-cbb5-4c17-b7d9-101ca26dc3a1', username: '12', password: '12' },
-    ],
+    users: [],
+    contact: [],
+    about: [],
     flag: false,
 
 }
 
 
 const rootReducer = (state = initialState, action) => {
-    switch (action.type) {
-        // case 'LOGIN_SUCCESS': {
-        //     return {
-        //         ...state,
-        //         users: action.users,
 
-        //     }
-        // }
+    switch (action.type) {
+
+        case 'RECEIVE_API_DATA_LOGIN': {
+            return {
+                ...state,
+                users: action.payload.data
+            }
+        }
+
+        case 'RECEIVE_API_DATA_ABOUT': {
+            return {
+                ...state,
+                about: action.payload.data
+            }
+        }
+
+        case 'RECEIVE_API_DATA_CONTACT': {
+            return {
+                ...state,
+                contact: action.payload.data,
+            }
+        }
+
         case 'LOGOUT_SUCCESS':
         case 'LOGIN_IN_SUCCESS': {
+            console.log(action);
             return {
                 ...state,
                 flag: action.data,
+                user: action.data.user,
+                id: action
             }
         }
 
