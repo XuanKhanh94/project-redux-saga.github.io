@@ -13,12 +13,12 @@
     .container__content {
         position: relative;
         .image__top-content {
-            background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(39, 180, 133, 0.8)),
-                url(../../assest/hero.jpg);
+            background-image: linear-gradient(to right bottom, rgba(171, 252, 157, 0.7), rgba(10, 207, 142, 0.4)),
+                url(../../assest/cover.jpg);
             background-position: top;
             background-size: cover;
             height: 90vh;
-            clip-path: polygon(0 0, 100% 0, 100% 70%, 0% 100%);
+            // clip-path: polygon(0 0, 100% 0, 100% 70%, 0% 100%);
         }
         .text-box {
             // position: relative;

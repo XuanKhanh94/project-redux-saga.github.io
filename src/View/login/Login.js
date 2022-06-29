@@ -28,8 +28,7 @@ function Login(props) {
                 user: values.usernames,
                 password: values.passwords,
                 flag: true,
-            }, openNotificationUser,
-            openNotificationPassword,
+            },
             openNotificationUserPassword,
             loginLoading
         })
@@ -41,25 +40,13 @@ function Login(props) {
         duration: 2.5,
         rtl: false,
     });
-    const openNotificationUser = (type) => {
-        notification[type]({
-            message: 'Sai tài khoản',
 
-        });
-    };
     const openNotificationUserPassword = (type) => {
         notification[type]({
-            message: 'Sai tài khoản và mật khẩu',
+            message: 'Sai tài khoản hoặc mật khẩu',
 
         });
     };
-
-    const openNotificationPassword = (type) => {
-        notification[type]({
-            message: 'Sai mật khẩu',
-
-        });
-    }
 
     function loginLoading() {
         const getElementLoading = ref.current;
@@ -139,7 +126,7 @@ function Login(props) {
                     >
                         Đăng nhập
                     </Button>
-                    OR <Link to="/signup">Đăng ký ngay!</Link>
+                    <Link to="/signup">Đăng ký ngay!</Link>
                 </Form.Item>
             </Form>
 

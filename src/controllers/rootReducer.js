@@ -34,7 +34,7 @@ const rootReducer = (state = initialState, action) => {
 
         case 'LOGOUT_SUCCESS':
         case 'LOGIN_IN_SUCCESS': {
-            console.log(action);
+
             return {
                 ...state,
                 flag: action.data,
@@ -51,6 +51,7 @@ const rootReducer = (state = initialState, action) => {
             }
         }
         case 'SIGNUP_SUCCESS': {
+            console.log(action);
             return {
                 ...state,
                 users: [...state.users, action.user]

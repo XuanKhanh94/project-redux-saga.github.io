@@ -16,7 +16,14 @@ function About(props) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const infoAbout = useSelector(state => state.about);
-    const selectorId = useSelector(state => state.id.id)
+    const selectorId = useSelector(state => {
+        let data = state.id;
+        if (data) {
+            return data.id;
+        } else {
+            return false;
+        }
+    })
 
     const handleLogout = () => {
         dispatch({
@@ -35,6 +42,9 @@ function About(props) {
             type: 'REQUEST_API_ABOUT',
             data: selectorId,
         })
+        if (selectorId === false) {
+            return navigate('*')
+        }
     }, [])
 
     return (
@@ -51,20 +61,11 @@ function About(props) {
                 </div>
             </div>
             <div className='about__img-cover'>
-                {/* {infoAbout.map(p => {
-                    return (
-                        <img src={p.imgcover} key={p.id} />
-                    )
-                })} */}
-                {/* <img src={img9} className='img-cover' /> */}
+
             </div>
             <div className='container__info-header'>
                 <div className='about__img-avatar'>
-                    {infoAbout.map((p) => {
-                        return (
-                            <img src={p.img} style={{ width: '200px', height: '200px' }} key={p.id} />
-                        )
-                    })}
+                    <img src={infoAbout.imgcover} />
                 </div>
 
                 <div className='title-name'>
@@ -72,12 +73,8 @@ function About(props) {
                     <h1 className='about__title-name'>
 
                         <span className='about__name-main'>
-                            {infoAbout.map((p) => {
 
-                                return (
-                                    <span key={p.id}>{p.name}</span>
-                                )
-                            })}
+                            <span>{infoAbout.name}</span>
                         </span>
                         <span className='about__name-sub'>
                             <div className='total-img'>
@@ -89,20 +86,11 @@ function About(props) {
                             </div>
                         </span>
                         <span className='about__name-sub'>
-                            {infoAbout.map((p) => {
 
-                                return (
-                                    <span key={p.id}>{p.title}</span>
-                                )
-                            })}
+                            {infoAbout.title}
                         </span>
                         <span className='about__name-sub'>
-                            {infoAbout.map((p) => {
-
-                                return (
-                                    <span key={p.id}>{moment(p.date).format('DD/MM/YYYY')}</span>
-                                )
-                            })}
+                            {moment(infoAbout.date).format('DD/MM/YYYY')}
                         </span>
                     </h1>
                 </div>

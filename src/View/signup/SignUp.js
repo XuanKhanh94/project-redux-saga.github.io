@@ -10,24 +10,6 @@ const SignUp = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const [form] = Form.useForm();
-    // const reducer = useSelector(state => state.users);
-    // console.log('reducer', reducer);
-    // const onFinish = (values) => {
-    //     dispatch({
-    //         type: 'SEND_REQUEST_REGISTER',
-    //         data: {
-    //             id: uuidv4(),
-    //             username: values.username,
-    //             password: values.password,
-
-    //         }, handleSubmit
-
-    //     })
-
-
-    // };
-
-
 
     const handleSubmit = () => {
         navigate('/')
@@ -45,7 +27,7 @@ const SignUp = () => {
                         dispatch({
                             type: 'SEND_REQUEST_REGISTER',
                             data: {
-                                id: uuidv4(),
+                                // id: uuidv4(),
                                 username: values.username,
                                 password: values.password,
 
