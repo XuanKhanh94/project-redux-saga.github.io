@@ -5,7 +5,7 @@ import rootSaga from "./rootSaga";
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 const composeEnhancers = composeWithDevTools({
-    // Specify name here, actionsBlacklist, actionsCreators and other options if needed
+
 });
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
